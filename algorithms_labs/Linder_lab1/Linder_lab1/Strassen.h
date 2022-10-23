@@ -2,7 +2,9 @@
 #include "Matrices.h";
 
 
-Matrix* matrix_addition(Matrix* matrix1, Matrix* matrix2, const int &n) {
+Matrix* matrix_addition(Matrix* matrix1, Matrix* matrix2) {
+
+	const int n = matrix1->n;
 
 	Matrix* matrix = new Matrix(n);
 
@@ -16,7 +18,9 @@ Matrix* matrix_addition(Matrix* matrix1, Matrix* matrix2, const int &n) {
 
 }
 
-Matrix* matrix_subtraction(Matrix* matrix1, Matrix* matrix2, const int& n) {
+Matrix* matrix_subtraction(Matrix* matrix1, Matrix* matrix2) {
+	
+	const int n = matrix1->n;
 
 	Matrix* matrix = new Matrix(n);
 
@@ -30,7 +34,9 @@ Matrix* matrix_subtraction(Matrix* matrix1, Matrix* matrix2, const int& n) {
 
 }
 
-Matrix* matrix_multiply(Matrix* matrix1, Matrix* matrix2, const int& n) {
+Matrix* matrix_multiply(Matrix* matrix1, Matrix* matrix2) {
+
+	const int n = matrix1->n;
 
 	Matrix* matrix = new Matrix(n);
 
@@ -56,7 +62,7 @@ Matrix* matrix_multiply(Matrix* matrix1, Matrix* matrix2, const int& n) {
 Matrix* strassen_multiply(Matrix* matrix1, Matrix* matrix2, const int& n) {
 
 	if (n<=4) {
-		return matrix_multiply(matrix1,matrix2,n);
+		return matrix_multiply(matrix1,matrix2);
 	}
 
 	const int& new_size = n/2 + n%2;
@@ -113,16 +119,16 @@ Matrix* strassen_multiply(Matrix* matrix1, Matrix* matrix2, const int& n) {
 		}
 	}
 
-	Matrix* s1 = matrix_subtraction(b01, b11, new_size);
-	Matrix* s2 = matrix_addition(a00, a01, new_size);
-	Matrix* s3 = matrix_addition(a10, a11, new_size);
-	Matrix* s4 = matrix_subtraction(b10, b00, new_size);
-	Matrix* s5 = matrix_addition(a00, a11, new_size);
-	Matrix* s6 = matrix_addition(b00, b11, new_size);
-	Matrix* s7 = matrix_subtraction(a01, a11, new_size);
-	Matrix* s8 = matrix_addition(b10, b11, new_size);
-	Matrix* s9 = matrix_subtraction(a00, a10, new_size);
-	Matrix* s10 = matrix_addition(b00, b01, new_size);
+	Matrix* s1 = matrix_subtraction(b01, b11);
+	Matrix* s2 = matrix_addition(a00, a01);
+	Matrix* s3 = matrix_addition(a10, a11);
+	Matrix* s4 = matrix_subtraction(b10, b00);
+	Matrix* s5 = matrix_addition(a00, a11);
+	Matrix* s6 = matrix_addition(b00, b11);
+	Matrix* s7 = matrix_subtraction(a01, a11);
+	Matrix* s8 = matrix_addition(b10, b11);
+	Matrix* s9 = matrix_subtraction(a00, a10);
+	Matrix* s10 = matrix_addition(b00, b01);
 
 	Matrix* p1 = strassen_multiply(a00, s1, new_size);
 	Matrix* p2 = strassen_multiply(s2, b11, new_size);
@@ -132,10 +138,10 @@ Matrix* strassen_multiply(Matrix* matrix1, Matrix* matrix2, const int& n) {
 	Matrix* p6 = strassen_multiply(s7, s8, new_size);
 	Matrix* p7 = strassen_multiply(s9, s10, new_size);
 
-	Matrix* c1 = matrix_addition(matrix_subtraction(matrix_addition(p5,p4, new_size),p2, new_size),p6, new_size);
-	Matrix* c2 = matrix_addition(p1,p2, new_size);
-	Matrix* c3 = matrix_addition(p3, p4, new_size);
-	Matrix* c4 = matrix_subtraction(matrix_subtraction(matrix_addition(p5, p1, new_size), p3, new_size), p7, new_size);
+	Matrix* c1 = matrix_addition(matrix_subtraction(matrix_addition(p5,p4),p2),p6);
+	Matrix* c2 = matrix_addition(p1,p2);
+	Matrix* c3 = matrix_addition(p3, p4);
+	Matrix* c4 = matrix_subtraction(matrix_subtraction(matrix_addition(p5, p1), p3), p7);
 
 
 	Matrix* result = new Matrix(n);

@@ -197,7 +197,7 @@ int main()
         cout << "Wrong input choice!" << endl;
     }*/
 
-    const int size = 8;
+    const int size = 9;
 
     Matrix* a = new Matrix(size);
     Matrix* b = new Matrix(size);
@@ -214,7 +214,7 @@ int main()
     cout << endl;
 
 
-    Matrix* result_brute_force = matrix_multiply(a,b,size);
+    Matrix* result_brute_force = matrix_multiply(a,b);
     print(result_brute_force->matrix,size);
 
     cout << endl;
