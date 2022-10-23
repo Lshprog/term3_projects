@@ -97,7 +97,7 @@ Matrix* strassen_multiply(Matrix* matrix1, Matrix* matrix2) {
 	const int c = matrix2->columns;
 	const int n = matrix1->columns;
 
-	if (n<=4 && r<=4 && c<=4) {
+	if (n<=50 && r<=50 && c<=50) {
 		return matrix_multiply(matrix1,matrix2);
 	}
 
@@ -175,10 +175,17 @@ Matrix* strassen_multiply(Matrix* matrix1, Matrix* matrix2) {
 	Matrix* p6 = strassen_multiply(s7, s8);
 	Matrix* p7 = strassen_multiply(s9, s10);
 
+	delete a00; delete a01; delete a10; delete a11;
+	delete b00; delete b01; delete b10; delete b11;
+	delete s1; delete s2; delete s3; delete s4; delete s5; delete s6; delete s7; delete s8; delete s9; delete s10;
+
 	Matrix* c1 = matrix_addition(matrix_subtraction(matrix_addition(p5,p4),p2),p6);
 	Matrix* c2 = matrix_addition(p1,p2);
 	Matrix* c3 = matrix_addition(p3, p4);
 	Matrix* c4 = matrix_subtraction(matrix_subtraction(matrix_addition(p5, p1), p3), p7);
+
+	
+	delete p1; delete p2; delete p3; delete p4; delete p5; delete p6; delete p7;
 
 
 	Matrix* result = new Matrix(r,c);
@@ -196,11 +203,13 @@ Matrix* strassen_multiply(Matrix* matrix1, Matrix* matrix2) {
 		}
 	}
 
+
+	delete c1; delete c2; delete c3; delete c4;
+
 	return result;
 
-	delete s1; delete s2; delete s3; delete s4; delete s5; delete s6; delete s7; delete s8; delete s9; delete s10;
-	delete p1; delete p2; delete p3; delete p4; delete p5; delete p6; delete p7;
-	delete c1; delete c2; delete c3; delete c4;
+	
+	
 
 }
 
