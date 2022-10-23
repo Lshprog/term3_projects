@@ -83,8 +83,6 @@ Matrix* matrix_minor(Matrix* matrix, int size)
     else
         det = 1;
 
-
-
     for (j = 0; j < size; j++) {
         for (i = 0; i < size; i++) {
             Matrix* minor = get_minor(matrix, j, i, size);
@@ -92,6 +90,7 @@ Matrix* matrix_minor(Matrix* matrix, int size)
                 result->matrix[j][i] = -det * matrix_det(minor, size - 1);
             else
                 result->matrix[j][i] = det * matrix_det(minor, size - 1);
+            delete minor;
         }
     }
     return result;
@@ -108,7 +107,7 @@ Matrix* reverse_matrix(Matrix* matrix, const int& n) {
             result->matrix[i][j] = minor->matrix[i][j] / det;
         }
     }
-
+    delete minor;
     return transpose(result, n);
 }
 
