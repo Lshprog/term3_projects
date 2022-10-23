@@ -17,7 +17,6 @@ struct Matrix {
 			matrix[i] = new double[columns];
 		}
 
-
 	}
 
 	~Matrix() {

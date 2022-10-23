@@ -139,10 +139,11 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="main.cpp" />
     <ClCompile Include="test.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Functionality_matrices.h" />
+    <ClInclude Include="Reversedmatrix_minors.h" />
     <ClInclude Include="Matrices.h" />
     <ClInclude Include="Strassen.h" />
   </ItemGroup>

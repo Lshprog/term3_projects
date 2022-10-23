@@ -1,8 +1,8 @@
 #define DOCTEST_CONFIG_IMPLEMENT_WITH_MAIN
 #include "doctest.h";
-
 #include "Strassen.h"
-
+#include "Functionality_matrices.h"
+#include "Reversedmatrix_minors.h"
 
 #include <time.h>
 
@@ -47,5 +47,27 @@ TEST_CASE("testing strassen`s algorithm") {
 	}
 
 
+}
 
+
+
+TEST_CASE("Test 2") {
+	
+	for (int n = 3; n < 7; n++) {
+
+		Matrix* matrix = create_matrix_random(n, n);
+
+		std::cout << "Matrix:" << std::endl;
+		matrix->print();
+		std::cout << "\nMatrix determinant: " << matrix_det(matrix, n) << std::endl;
+		std::cout << "\nReversed matrix:\n";
+
+		Matrix* reversed = reverse_matrix(matrix, n);
+		reversed->print();
+
+		delete matrix;
+		delete reversed;
+
+	}
+	
 }
