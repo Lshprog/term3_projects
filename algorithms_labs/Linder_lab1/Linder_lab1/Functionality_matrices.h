@@ -43,7 +43,7 @@ bool compare_matrices(Matrix* matrix1, Matrix* matrix2) {
 
 
 bool check_matrices_for_multiply(Matrix* matrix1, Matrix* matrix2) {
-	if (matrix1->columns == matrix2->rows)
+	if ((matrix1->columns == matrix2->rows)&&(matrix1->rows>0)&&(matrix2->columns>0))
 		return true;
 	else
 		return false;

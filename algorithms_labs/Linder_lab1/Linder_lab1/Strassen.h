@@ -15,7 +15,7 @@ Matrix* strassen_multiply(Matrix* matrix1, Matrix* matrix2) {
 		return matrix_multiply(matrix1,matrix2);
 	}
 
-	const int new_size = n  /2 + n % 2;
+	const int new_size = n / 2 + n % 2;
 	const int new_r = r / 2 + r % 2;
 	const int new_c = c / 2 + c % 2;
 
