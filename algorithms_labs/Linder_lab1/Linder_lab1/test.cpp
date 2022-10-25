@@ -11,15 +11,19 @@ TEST_CASE("testing strassen`s algorithm") {
 	std::clock_t start;
 	std::clock_t finish;
 
-	for (int i = 2048; i < 2049; i += 2) {
-		Matrix* matrix1 = create_matrix_random(i-1,i);
-		Matrix* matrix2 = create_matrix_random(i,i+1);
+	for (int i = 1000; i < 1001; i += 2) {
+		Matrix* matrix1 = create_matrix_random_double(i,i);
+		Matrix* matrix2 = create_matrix_random_double(i,i);
+		//matrix1->print();
+		//std::cout << std::endl;
+		//matrix2->print();
+		//std::cout << std::endl;
 
 		start = clock();
 		Matrix* not_strassen = matrix_multiply(matrix1,matrix2);
 		//not_strassen->print();
 		finish = clock();
-		std::cout << " Regular algorithm : " << std::endl;
+		std::cout << " Regular algorithm for " <<i<<" x "<<i<< std::endl;
 		std::cout << " >>>Start : " << start <<"ms" << std::endl;
 		std::cout << " >>>Finish : " << finish << "ms" << std::endl;
 		std::cout << " >>>Time taken : " << finish - start << "ms" << std::endl;
@@ -30,7 +34,7 @@ TEST_CASE("testing strassen`s algorithm") {
 		//strassen->print();
 		finish = clock();
 
-		std::cout << " Strassen`s algorithm : " << std::endl;
+		std::cout << " Strassen`s algorithm for " <<i<<" x "<<i<< std::endl;
 		std::cout << " >>>Start : " << start << "ms" <<std::endl;
 		std::cout << " >>>Finish : " << finish << "ms" << std::endl;
 		std::cout << " >>>Time taken : " << finish - start << "ms"  << std::endl;
