@@ -543,10 +543,10 @@
         "-ferror-limit=1000",
         "-x",
         "c++-header",
-        "C:\\Users\\onisa\\source\\repos\\term3_projects\\oop_labs\\build-Lab2_qt-Desktop_Qt_6_4_0_MinGW_64_bit-Debug\\ui_mainwindow.h"
+        "C:\\Users\\onisa\\source\\repos\\term3_projects\\oop_labs\\build-Lab2_qt-Desktop_Qt_6_4_0_MinGW_64_bit-Debug\\ui_inputhyper.h"
     ],
     "directory": "C:/Users/onisa/source/repos/term3_projects/oop_labs/build-Lab2_qt-Desktop_Qt_6_4_0_MinGW_64_bit-Debug/.qtc_clangd",
-    "file": "C:/Users/onisa/source/repos/term3_projects/oop_labs/build-Lab2_qt-Desktop_Qt_6_4_0_MinGW_64_bit-Debug/ui_mainwindow.h"
+    "file": "C:/Users/onisa/source/repos/term3_projects/oop_labs/build-Lab2_qt-Desktop_Qt_6_4_0_MinGW_64_bit-Debug/ui_inputhyper.h"
 },
 {
     "arguments": [
@@ -604,9 +604,9 @@
         "-ferror-limit=1000",
         "-x",
         "c++-header",
-        "C:\\Users\\onisa\\source\\repos\\term3_projects\\oop_labs\\build-Lab2_qt-Desktop_Qt_6_4_0_MinGW_64_bit-Debug\\ui_inputhyper.h"
+        "C:\\Users\\onisa\\source\\repos\\term3_projects\\oop_labs\\build-Lab2_qt-Desktop_Qt_6_4_0_MinGW_64_bit-Debug\\ui_mainwindow.h"
     ],
     "directory": "C:/Users/onisa/source/repos/term3_projects/oop_labs/build-Lab2_qt-Desktop_Qt_6_4_0_MinGW_64_bit-Debug/.qtc_clangd",
-    "file": "C:/Users/onisa/source/repos/term3_projects/oop_labs/build-Lab2_qt-Desktop_Qt_6_4_0_MinGW_64_bit-Debug/ui_inputhyper.h"
+    "file": "C:/Users/onisa/source/repos/term3_projects/oop_labs/build-Lab2_qt-Desktop_Qt_6_4_0_MinGW_64_bit-Debug/ui_mainwindow.h"
 }
 ]

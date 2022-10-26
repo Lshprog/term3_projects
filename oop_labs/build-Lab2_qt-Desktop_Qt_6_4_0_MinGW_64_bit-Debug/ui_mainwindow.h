@@ -19,6 +19,8 @@
 #include <QtWidgets/QPushButton>
 #include <QtWidgets/QSpacerItem>
 #include <QtWidgets/QStatusBar>
+#include <QtWidgets/QTabWidget>
+#include <QtWidgets/QTextBrowser>
 #include <QtWidgets/QVBoxLayout>
 #include <QtWidgets/QWidget>
 
@@ -30,8 +32,12 @@ public:
     QWidget *centralWidget;
     QHBoxLayout *horizontalLayout;
     QVBoxLayout *leftLayout;
+    QTabWidget *tabWidget;
+    QWidget *tab_2;
+    QWidget *tab;
     QLabel *titleCountriesLabel;
     QListView *countryListView;
+    QWidget *layoutWidget;
     QVBoxLayout *rightLayout;
     QLabel *titleDetailsLabel;
     QFormLayout *countryDetailsLayout;
@@ -39,6 +45,8 @@ public:
     QLabel *countryNameLabel;
     QLabel *formCapitalLabel;
     QLabel *countryCapitalLabel;
+    QTextBrowser *textBrowser;
+    QLabel *formDescriptionLabel;
     QSpacerItem *verticalSpacer;
     QPushButton *pushButton;
     QStatusBar *statusBar;
@@ -47,7 +55,7 @@ public:
     {
         if (MainWindow->objectName().isEmpty())
             MainWindow->setObjectName("MainWindow");
-        MainWindow->resize(1069, 578);
+        MainWindow->resize(1034, 593);
         centralWidget = new QWidget(MainWindow);
         centralWidget->setObjectName("centralWidget");
         horizontalLayout = new QHBoxLayout(centralWidget);
@@ -57,8 +65,16 @@ public:
         leftLayout = new QVBoxLayout();
         leftLayout->setSpacing(6);
         leftLayout->setObjectName("leftLayout");
-        titleCountriesLabel = new QLabel(centralWidget);
+        tabWidget = new QTabWidget(centralWidget);
+        tabWidget->setObjectName("tabWidget");
+        tab_2 = new QWidget();
+        tab_2->setObjectName("tab_2");
+        tabWidget->addTab(tab_2, QString());
+        tab = new QWidget();
+        tab->setObjectName("tab");
+        titleCountriesLabel = new QLabel(tab);
         titleCountriesLabel->setObjectName("titleCountriesLabel");
+        titleCountriesLabel->setGeometry(QRect(60, 20, 250, 50));
         QSizePolicy sizePolicy(QSizePolicy::Preferred, QSizePolicy::Preferred);
         sizePolicy.setHorizontalStretch(0);
         sizePolicy.setVerticalStretch(0);
@@ -71,27 +87,24 @@ public:
         font.setBold(true);
         titleCountriesLabel->setFont(font);
         titleCountriesLabel->setAlignment(Qt::AlignCenter);
-
-        leftLayout->addWidget(titleCountriesLabel);
-
-        countryListView = new QListView(centralWidget);
+        countryListView = new QListView(tab);
         countryListView->setObjectName("countryListView");
+        countryListView->setGeometry(QRect(60, 100, 250, 371));
         QSizePolicy sizePolicy1(QSizePolicy::Expanding, QSizePolicy::Expanding);
         sizePolicy1.setHorizontalStretch(0);
         sizePolicy1.setVerticalStretch(0);
         sizePolicy1.setHeightForWidth(countryListView->sizePolicy().hasHeightForWidth());
         countryListView->setSizePolicy(sizePolicy1);
         countryListView->setMaximumSize(QSize(250, 16777215));
-
-        leftLayout->addWidget(countryListView);
-
-
-        horizontalLayout->addLayout(leftLayout);
-
-        rightLayout = new QVBoxLayout();
+        layoutWidget = new QWidget(tab);
+        layoutWidget->setObjectName("layoutWidget");
+        layoutWidget->setGeometry(QRect(620, 0, 341, 511));
+        rightLayout = new QVBoxLayout(layoutWidget);
         rightLayout->setSpacing(6);
+        rightLayout->setContentsMargins(11, 11, 11, 11);
         rightLayout->setObjectName("rightLayout");
-        titleDetailsLabel = new QLabel(centralWidget);
+        rightLayout->setContentsMargins(0, 0, 0, 0);
+        titleDetailsLabel = new QLabel(layoutWidget);
         titleDetailsLabel->setObjectName("titleDetailsLabel");
         titleDetailsLabel->setMinimumSize(QSize(0, 50));
         titleDetailsLabel->setFont(font);
@@ -103,7 +116,7 @@ public:
         countryDetailsLayout->setSpacing(6);
         countryDetailsLayout->setObjectName("countryDetailsLayout");
         countryDetailsLayout->setContentsMargins(0, -1, -1, -1);
-        formNameLabel = new QLabel(centralWidget);
+        formNameLabel = new QLabel(layoutWidget);
         formNameLabel->setObjectName("formNameLabel");
         QFont font1;
         font1.setPointSize(12);
@@ -111,21 +124,32 @@ public:
 
         countryDetailsLayout->setWidget(0, QFormLayout::LabelRole, formNameLabel);
 
-        countryNameLabel = new QLabel(centralWidget);
+        countryNameLabel = new QLabel(layoutWidget);
         countryNameLabel->setObjectName("countryNameLabel");
 
         countryDetailsLayout->setWidget(0, QFormLayout::FieldRole, countryNameLabel);
 
-        formCapitalLabel = new QLabel(centralWidget);
+        formCapitalLabel = new QLabel(layoutWidget);
         formCapitalLabel->setObjectName("formCapitalLabel");
         formCapitalLabel->setFont(font1);
 
         countryDetailsLayout->setWidget(1, QFormLayout::LabelRole, formCapitalLabel);
 
-        countryCapitalLabel = new QLabel(centralWidget);
+        countryCapitalLabel = new QLabel(layoutWidget);
         countryCapitalLabel->setObjectName("countryCapitalLabel");
 
         countryDetailsLayout->setWidget(1, QFormLayout::FieldRole, countryCapitalLabel);
+
+        textBrowser = new QTextBrowser(layoutWidget);
+        textBrowser->setObjectName("textBrowser");
+
+        countryDetailsLayout->setWidget(2, QFormLayout::FieldRole, textBrowser);
+
+        formDescriptionLabel = new QLabel(layoutWidget);
+        formDescriptionLabel->setObjectName("formDescriptionLabel");
+        formDescriptionLabel->setFont(font1);
+
+        countryDetailsLayout->setWidget(2, QFormLayout::LabelRole, formDescriptionLabel);
 
 
         rightLayout->addLayout(countryDetailsLayout);
@@ -134,13 +158,17 @@ public:
 
         rightLayout->addItem(verticalSpacer);
 
-        pushButton = new QPushButton(centralWidget);
+        pushButton = new QPushButton(layoutWidget);
         pushButton->setObjectName("pushButton");
 
         rightLayout->addWidget(pushButton);
 
+        tabWidget->addTab(tab, QString());
 
-        horizontalLayout->addLayout(rightLayout);
+        leftLayout->addWidget(tabWidget);
+
+
+        horizontalLayout->addLayout(leftLayout);
 
         MainWindow->setCentralWidget(centralWidget);
         statusBar = new QStatusBar(MainWindow);
@@ -149,19 +177,25 @@ public:
 
         retranslateUi(MainWindow);
 
+        tabWidget->setCurrentIndex(1);
+
+
         QMetaObject::connectSlotsByName(MainWindow);
     } // setupUi
 
     void retranslateUi(QMainWindow *MainWindow)
     {
         MainWindow->setWindowTitle(QCoreApplication::translate("MainWindow", "MainWindow", nullptr));
+        tabWidget->setTabText(tabWidget->indexOf(tab_2), QCoreApplication::translate("MainWindow", "Tab 2", nullptr));
         titleCountriesLabel->setText(QCoreApplication::translate("MainWindow", "Your hyperlinks", nullptr));
         titleDetailsLabel->setText(QCoreApplication::translate("MainWindow", "Details", nullptr));
         formNameLabel->setText(QCoreApplication::translate("MainWindow", "Name", nullptr));
         countryNameLabel->setText(QCoreApplication::translate("MainWindow", "-", nullptr));
-        formCapitalLabel->setText(QCoreApplication::translate("MainWindow", "Capital", nullptr));
+        formCapitalLabel->setText(QCoreApplication::translate("MainWindow", "Link", nullptr));
         countryCapitalLabel->setText(QCoreApplication::translate("MainWindow", "-", nullptr));
+        formDescriptionLabel->setText(QCoreApplication::translate("MainWindow", "Description", nullptr));
         pushButton->setText(QCoreApplication::translate("MainWindow", "PushButton", nullptr));
+        tabWidget->setTabText(tabWidget->indexOf(tab), QCoreApplication::translate("MainWindow", "Tab 1", nullptr));
     } // retranslateUi
 
 };

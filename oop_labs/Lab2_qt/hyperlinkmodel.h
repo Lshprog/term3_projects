@@ -20,7 +20,7 @@ public:
 
     int rowCount(const QModelIndex& parent = QModelIndex()) const override;
     QVariant data(const QModelIndex& index, int role) const override;
-    void addHyperlink(Hyperlink *link);
+    void addHyperlink(Hyperlink &link);
 private:
     QVector<Hyperlink*> links;
 

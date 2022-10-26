@@ -51,7 +51,7 @@ void MainWindow::on_pushButton_clicked()
         return;
 
 
-    Hyperlink* new_hyperlink = new Hyperlink(window.name(),window.hyperlink(),":/flags/fr.png");
+    Hyperlink new_hyperlink = Hyperlink(window.name(),window.hyperlink(),":/flags/fr.png");
 
    //int row = hyperlinkModel.rowCount();
 
@@ -64,6 +64,12 @@ void MainWindow::on_pushButton_clicked()
 
    //ui->countryListView->setCurrentIndex(index);
 
+
+}
+
+
+void MainWindow::on_tab_customContextMenuRequested(const QPoint &pos)
+{
 
 }
 

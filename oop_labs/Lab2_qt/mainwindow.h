@@ -23,6 +23,8 @@ private slots:
 
     void on_pushButton_clicked();
 
+    void on_tab_customContextMenuRequested(const QPoint &pos);
+
 private:
     Ui::MainWindow *ui;
     HyperlinkModel hyperlinkModel;

@@ -24,12 +24,12 @@ int HyperlinkModel::rowCount(const QModelIndex& parent) const
     return links.size();
 }
 
-void HyperlinkModel::addHyperlink(Hyperlink* link){
+void HyperlinkModel::addHyperlink(Hyperlink &link){
 
-    QString new_url = "<a href=\""+link->link+"\">"+link->name+"</a>";
-    link->link = new_url;
+    QString new_url = "<a href=\""+link.link+"\">"+link.name+"</a>";
+    link.link = new_url;
     beginResetModel();
-    links.append(link);
+    links.append(&link);
     endResetModel();
 
 }
