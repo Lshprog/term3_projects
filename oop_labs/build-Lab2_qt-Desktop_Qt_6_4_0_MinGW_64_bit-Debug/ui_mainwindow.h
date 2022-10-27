@@ -33,7 +33,6 @@ public:
     QHBoxLayout *horizontalLayout;
     QVBoxLayout *leftLayout;
     QTabWidget *tabWidget;
-    QWidget *tab_2;
     QWidget *tab;
     QLabel *titleCountriesLabel;
     QListView *countryListView;
@@ -45,8 +44,8 @@ public:
     QLabel *countryNameLabel;
     QLabel *formCapitalLabel;
     QLabel *countryCapitalLabel;
-    QTextBrowser *textBrowser;
     QLabel *formDescriptionLabel;
+    QTextBrowser *textBrowser;
     QSpacerItem *verticalSpacer;
     QPushButton *pushButton;
     QStatusBar *statusBar;
@@ -55,7 +54,7 @@ public:
     {
         if (MainWindow->objectName().isEmpty())
             MainWindow->setObjectName("MainWindow");
-        MainWindow->resize(1034, 593);
+        MainWindow->resize(1175, 678);
         centralWidget = new QWidget(MainWindow);
         centralWidget->setObjectName("centralWidget");
         horizontalLayout = new QHBoxLayout(centralWidget);
@@ -67,14 +66,11 @@ public:
         leftLayout->setObjectName("leftLayout");
         tabWidget = new QTabWidget(centralWidget);
         tabWidget->setObjectName("tabWidget");
-        tab_2 = new QWidget();
-        tab_2->setObjectName("tab_2");
-        tabWidget->addTab(tab_2, QString());
         tab = new QWidget();
         tab->setObjectName("tab");
         titleCountriesLabel = new QLabel(tab);
         titleCountriesLabel->setObjectName("titleCountriesLabel");
-        titleCountriesLabel->setGeometry(QRect(60, 20, 250, 50));
+        titleCountriesLabel->setGeometry(QRect(420, 20, 250, 50));
         QSizePolicy sizePolicy(QSizePolicy::Preferred, QSizePolicy::Preferred);
         sizePolicy.setHorizontalStretch(0);
         sizePolicy.setVerticalStretch(0);
@@ -89,7 +85,7 @@ public:
         titleCountriesLabel->setAlignment(Qt::AlignCenter);
         countryListView = new QListView(tab);
         countryListView->setObjectName("countryListView");
-        countryListView->setGeometry(QRect(60, 100, 250, 371));
+        countryListView->setGeometry(QRect(430, 130, 250, 371));
         QSizePolicy sizePolicy1(QSizePolicy::Expanding, QSizePolicy::Expanding);
         sizePolicy1.setHorizontalStretch(0);
         sizePolicy1.setVerticalStretch(0);
@@ -98,7 +94,7 @@ public:
         countryListView->setMaximumSize(QSize(250, 16777215));
         layoutWidget = new QWidget(tab);
         layoutWidget->setObjectName("layoutWidget");
-        layoutWidget->setGeometry(QRect(620, 0, 341, 511));
+        layoutWidget->setGeometry(QRect(710, 0, 351, 511));
         rightLayout = new QVBoxLayout(layoutWidget);
         rightLayout->setSpacing(6);
         rightLayout->setContentsMargins(11, 11, 11, 11);
@@ -140,16 +136,16 @@ public:
 
         countryDetailsLayout->setWidget(1, QFormLayout::FieldRole, countryCapitalLabel);
 
-        textBrowser = new QTextBrowser(layoutWidget);
-        textBrowser->setObjectName("textBrowser");
-
-        countryDetailsLayout->setWidget(2, QFormLayout::FieldRole, textBrowser);
-
         formDescriptionLabel = new QLabel(layoutWidget);
         formDescriptionLabel->setObjectName("formDescriptionLabel");
         formDescriptionLabel->setFont(font1);
 
         countryDetailsLayout->setWidget(2, QFormLayout::LabelRole, formDescriptionLabel);
+
+        textBrowser = new QTextBrowser(layoutWidget);
+        textBrowser->setObjectName("textBrowser");
+
+        countryDetailsLayout->setWidget(2, QFormLayout::FieldRole, textBrowser);
 
 
         rightLayout->addLayout(countryDetailsLayout);
@@ -177,7 +173,7 @@ public:
 
         retranslateUi(MainWindow);
 
-        tabWidget->setCurrentIndex(1);
+        tabWidget->setCurrentIndex(0);
 
 
         QMetaObject::connectSlotsByName(MainWindow);
@@ -186,7 +182,6 @@ public:
     void retranslateUi(QMainWindow *MainWindow)
     {
         MainWindow->setWindowTitle(QCoreApplication::translate("MainWindow", "MainWindow", nullptr));
-        tabWidget->setTabText(tabWidget->indexOf(tab_2), QCoreApplication::translate("MainWindow", "Tab 2", nullptr));
         titleCountriesLabel->setText(QCoreApplication::translate("MainWindow", "Your hyperlinks", nullptr));
         titleDetailsLabel->setText(QCoreApplication::translate("MainWindow", "Details", nullptr));
         formNameLabel->setText(QCoreApplication::translate("MainWindow", "Name", nullptr));

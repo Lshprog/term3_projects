@@ -115,7 +115,6 @@ bool TableModel::setData(const QModelIndex &index, const QVariant &value, int ro
                 break;
             case 1:
                 hyperlink.link = value.toString();
-
                 break;
             case 2:
                 hyperlink.description = value.toString();
@@ -149,3 +148,7 @@ const QVector<Hyperlink> &TableModel::getHyperlinks() const
     return hyperlinks;
 }
 //! [8]
+//!
+
+//!
+//!

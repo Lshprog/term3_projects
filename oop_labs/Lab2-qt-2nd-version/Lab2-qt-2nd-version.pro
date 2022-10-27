@@ -13,6 +13,7 @@ SOURCES += \
     addresswidget.cpp \
     main.cpp \
     mainwindow.cpp \
+    mydelegate.cpp \
     newaddresstab.cpp \
     tablemodel.cpp
 
@@ -20,6 +21,7 @@ HEADERS += \
     adddialog.h \
     addresswidget.h \
     mainwindow.h \
+    mydelegate.h \
     newaddresstab.h \
     tablemodel.h
 

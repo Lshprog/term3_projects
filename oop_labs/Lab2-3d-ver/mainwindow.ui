@@ -6,36 +6,141 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>800</width>
-    <height>600</height>
+    <width>1288</width>
+    <height>614</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>MainWindow</string>
   </property>
   <widget class="QWidget" name="centralwidget">
-   <widget class="QListView" name="listView">
+   <widget class="QTreeWidget" name="treeWidget">
     <property name="geometry">
      <rect>
       <x>50</x>
-      <y>160</y>
-      <width>256</width>
-      <height>321</height>
+      <y>60</y>
+      <width>221</width>
+      <height>481</height>
      </rect>
     </property>
+    <column>
+     <property name="text">
+      <string notr="true">1</string>
+     </property>
+    </column>
    </widget>
-   <widget class="QLabel" name="label">
+   <widget class="QLabel" name="Info_label">
     <property name="geometry">
      <rect>
-      <x>100</x>
-      <y>70</y>
-      <width>171</width>
-      <height>51</height>
+      <x>690</x>
+      <y>50</y>
+      <width>211</width>
+      <height>20</height>
      </rect>
     </property>
-    <property name="text">
-     <string>Names in here</string>
+    <property name="styleSheet">
+     <string notr="true">font:bold 14px;
+</string>
     </property>
+    <property name="text">
+     <string>Information</string>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignCenter</set>
+    </property>
+    <property name="openExternalLinks">
+     <bool>false</bool>
+    </property>
+   </widget>
+   <widget class="QLabel" name="Cat_label">
+    <property name="geometry">
+     <rect>
+      <x>90</x>
+      <y>20</y>
+      <width>131</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">font:bold 14px;
+</string>
+    </property>
+    <property name="text">
+     <string>Categories</string>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignCenter</set>
+    </property>
+   </widget>
+   <widget class="QWidget" name="layoutWidget">
+    <property name="geometry">
+     <rect>
+      <x>510</x>
+      <y>100</y>
+      <width>531</width>
+      <height>391</height>
+     </rect>
+    </property>
+    <layout class="QFormLayout" name="formLayout">
+     <item row="0" column="0">
+      <widget class="QLabel" name="Name_label">
+       <property name="styleSheet">
+        <string notr="true">font:bold 12px</string>
+       </property>
+       <property name="text">
+        <string>Name</string>
+       </property>
+      </widget>
+     </item>
+     <item row="1" column="0">
+      <widget class="QLabel" name="Link_label">
+       <property name="styleSheet">
+        <string notr="true">font:bold 12px</string>
+       </property>
+       <property name="text">
+        <string>Link</string>
+       </property>
+      </widget>
+     </item>
+     <item row="1" column="1">
+      <widget class="QLabel" name="Link_text">
+       <property name="styleSheet">
+        <string notr="true">color:rgb(85, 0, 255);
+font: 9pt &quot;Arial&quot;;
+text-decoration: underline;</string>
+       </property>
+       <property name="text">
+        <string>TextLabel</string>
+       </property>
+       <property name="openExternalLinks">
+        <bool>true</bool>
+       </property>
+      </widget>
+     </item>
+     <item row="2" column="0">
+      <widget class="QLabel" name="Desc_label">
+       <property name="styleSheet">
+        <string notr="true">font:bold 12px</string>
+       </property>
+       <property name="text">
+        <string>Description</string>
+       </property>
+      </widget>
+     </item>
+     <item row="2" column="1">
+      <widget class="QTextBrowser" name="Desc_text"/>
+     </item>
+     <item row="0" column="1">
+      <widget class="QLabel" name="Name_text">
+       <property name="text">
+        <string>TextLabel</string>
+       </property>
+       <property name="openExternalLinks">
+        <bool>false</bool>
+       </property>
+      </widget>
+     </item>
+    </layout>
    </widget>
   </widget>
   <widget class="QMenuBar" name="menubar">
@@ -43,12 +148,71 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>800</width>
+     <width>1288</width>
      <height>22</height>
     </rect>
    </property>
+   <widget class="QMenu" name="menuFile">
+    <property name="title">
+     <string>File</string>
+    </property>
+    <addaction name="actionSave_File"/>
+    <addaction name="actionImport_FIle"/>
+   </widget>
+   <widget class="QMenu" name="menuActions">
+    <property name="title">
+     <string>Actions</string>
+    </property>
+    <addaction name="actionAdd_Category"/>
+    <addaction name="separator"/>
+    <addaction name="actionAdd_element"/>
+    <addaction name="actionDelete_Element"/>
+    <addaction name="actionEdit_Element"/>
+   </widget>
+   <addaction name="menuFile"/>
+   <addaction name="menuActions"/>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
+  <action name="actionInsert_row">
+   <property name="text">
+    <string>Insert row</string>
+   </property>
+  </action>
+  <action name="actionInsert_column">
+   <property name="text">
+    <string>Insert column</string>
+   </property>
+  </action>
+  <action name="actionSave_File">
+   <property name="text">
+    <string>Save File</string>
+   </property>
+  </action>
+  <action name="actionImport_FIle">
+   <property name="text">
+    <string>Import File</string>
+   </property>
+  </action>
+  <action name="actionAdd_Category">
+   <property name="text">
+    <string>Add Category</string>
+   </property>
+  </action>
+  <action name="actionAdd_element">
+   <property name="text">
+    <string>Add Element</string>
+   </property>
+  </action>
+  <action name="actionDelete_Element">
+   <property name="text">
+    <string>Delete Element</string>
+   </property>
+  </action>
+  <action name="actionEdit_Element">
+   <property name="text">
+    <string>Edit Element</string>
+   </property>
+  </action>
  </widget>
  <resources/>
  <connections/>

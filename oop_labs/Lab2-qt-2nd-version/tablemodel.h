@@ -3,6 +3,8 @@
 
 #include <QAbstractTableModel>
 #include <QVector>
+#include <QLabel>
+#include "mydelegate.h"
 
 //! [0]
 
@@ -16,6 +18,7 @@ struct Hyperlink
     {
         return name == other.name && link == other.link && description == other.description;
     }
+
 };
 
 inline QDataStream &operator<<(QDataStream &stream, const Hyperlink &hyperlink)
@@ -26,16 +29,16 @@ inline QDataStream &operator<<(QDataStream &stream, const Hyperlink &hyperlink)
 inline QDataStream &operator>>(QDataStream &stream, Hyperlink &hyperlink)
 {
     return stream >> hyperlink.name >> hyperlink.link >> hyperlink.description;
+
 }
 
 class TableModel : public QAbstractTableModel
 {
     Q_OBJECT
 
-public:
+public:    
     TableModel(QObject *parent = nullptr);
     TableModel(const QVector<Hyperlink> &hyperlinks, QObject *parent = nullptr);
-
     int rowCount(const QModelIndex &parent) const override;
     int columnCount(const QModelIndex &parent) const override;
     QVariant data(const QModelIndex &index, int role) const override;
@@ -46,8 +49,11 @@ public:
     bool removeRows(int position, int rows, const QModelIndex &index = QModelIndex()) override;
     const QVector<Hyperlink> &getHyperlinks() const;
 
+
 private:
     QVector<Hyperlink> hyperlinks;
+    MyDelegate *m_delegate;
+
 };
 //! [0]
 

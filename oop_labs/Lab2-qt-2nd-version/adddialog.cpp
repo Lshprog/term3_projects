@@ -51,7 +51,9 @@ QString AddDialog::name() const
 }
 
 QString AddDialog::link() const{
+
     return QString("<a href=\"%1\">%1</a>").arg(linkText->text());
+
 }
 
 QString AddDialog::description() const

@@ -3,6 +3,7 @@
 
 #include "newaddresstab.h"
 #include "tablemodel.h"
+#include "mydelegate.h"
 
 #include <QItemSelection>
 #include <QTabWidget>
@@ -25,7 +26,7 @@ public:
 
 public slots:
     void showAddEntryDialog();
-    void addEntry(const QString &name, const QString &link,const QString &description);
+    void addEntry(const QString &name, const QString &link, const QString &description);
     void editEntry();
     void removeEntry();
 
@@ -37,6 +38,8 @@ private:
 
     TableModel *table;
     NewAddressTab *newAddressTab;
+    MyDelegate *m_delegate;
+
 };
 //! [0]
 

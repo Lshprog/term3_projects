@@ -29,11 +29,10 @@ void AddressWidget::showAddEntryDialog()
 //! [2]
 
 //! [3]
-void AddressWidget::addEntry(const QString &name, const QString &link, const QString &description)
+void AddressWidget::addEntry(const QString &name, const QString &link,const QString &description)
 {
     if (!table->getHyperlinks().contains({ name, link, description })) {
         table->insertRows(0, 1, QModelIndex());
-
         QModelIndex index = table->index(0, 0, QModelIndex());
         table->setData(index, name, Qt::EditRole);
         index = table->index(0, 1, QModelIndex());
@@ -137,12 +136,13 @@ void AddressWidget::setupTabs()
 
         QTableView *tableView = new QTableView;
         tableView->setModel(proxyModel);
+        tableView->setItemDelegateForColumn(1,m_delegate);
         tableView->setSelectionBehavior(QAbstractItemView::SelectRows);
         tableView->horizontalHeader()->setStretchLastSection(true);
         tableView->verticalHeader()->hide();
         tableView->setEditTriggers(QAbstractItemView::NoEditTriggers);
         tableView->setSelectionMode(QAbstractItemView::SingleSelection);
-        tableView->setSortingEnabled(true);
+        tableView->setSortingEnabled(false);//!!!
 
 
         connect(tableView->selectionModel(), &QItemSelectionModel::selectionChanged,
